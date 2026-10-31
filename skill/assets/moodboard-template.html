@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Directions — PROJECT NAME</title>
+<style>
+  /* Neutral board chrome so it never competes with the directions themselves. */
+  :root { --ink: #1d1d1f; --muted: #6e6e73; --line: #d9d9de; --paper: #f5f5f7; }
+  * { box-sizing: border-box; margin: 0; }
+  body { font: 15px/1.5 system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--paper); }
+  header { padding: 32px 40px 8px; }
+  header h1 { font-size: 22px; font-weight: 600; }
+  header p { color: var(--muted); max-width: 80ch; }
+  .board { display: grid; grid-template-columns: repeat(3, minmax(360px, 1fr)); gap: 24px; padding: 24px 40px 64px; }
+  .dir { background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .hero { padding: 28px 24px; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; }
+  .hero .tag { font-size: 12px; opacity: .75; }
+  .hero h2 { font-size: 40px; line-height: 1.05; }
+  .hero .concept { font-size: 16px; opacity: .9; }
+  section { padding: 18px 24px; border-top: 1px solid var(--line); }
+  section h3 { font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  ol { padding-left: 18px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+  .sw { border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+  .sw div { height: 56px; }
+  .sw small { display: block; padding: 6px 8px; font-size: 11px; line-height: 1.3; white-space: pre-line; }
+  .specimen .display { font-size: 44px; line-height: 1.05; margin-bottom: 6px; }
+  .specimen .body { font-size: 16px; }
+  .specimen small { color: var(--muted); display: block; margin-top: 6px; }
+  .refs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .refs figure img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 6px; border: 1px solid var(--line); }
+  .refs figcaption { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  pre { font: 12px/1.35 ui-monospace, monospace; background: var(--paper); padding: 12px; border-radius: 8px; overflow-x: auto; }
+  dl { display: grid; grid-template-columns: 110px 1fr; gap: 4px 12px; }
+  dt { color: var(--muted); }
+  @media (max-width: 1100px) { .board { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title"></h1>
+  <p id="brief"></p>
+</header>
+<main class="board" id="board"></main>
+
+<script>
+/* Fill this object. Fonts: "google" loads from Google Fonts, "fontshare" from the Fontshare CDN. */
+const BOARD = {
+  project: "PROJECT NAME",
+  brief: "Subject · audience · goal · feeling",
+  directions: [
+    {
+      tag: "A · safe-strong",
+      name: "Direction name",
+      concept: "The idea in one line.",
+      story: ["Beat 1", "Beat 2", "Beat 3"],
+      signature: "The one moment people remember.",
+      palette: [
+        { name: "Base", hex: "#ffffff", role: "background" },
+        { name: "Ink", hex: "#111111", role: "text" },
+        { name: "Accent", hex: "#ff5a1f", role: "the part that matters now" }
+      ],
+      heroColors: { bg: "#ffffff", fg: "#111111" },
+      type: {
+        display: { family: "Instrument Serif", source: "google", weight: 400 },
+        body: { family: "Instrument Sans", source: "google", weight: 400 },
+        sample: "A headline written from the concept"
+      },
+      motion: "Speed, easing character, what moves, what never moves.",
+      threeD: "None / ambient / hero object / explorable — and why.",
+      layout: "+--------------------------+\n|  HERO                    |\n+--------------------------+",
+      refs: [ { src: "refs/01-example.png", caption: "site.com — why it matters" } ]
+    }
+  ]
+};
+
+const fontLinks = new Set();
+function loadFont(f) {
+  if (!f) return;
+  const fam = f.family.trim();
+  if (f.source === "google") fontLinks.add(`https://fonts.googleapis.com/css2?family=${fam.replace(/ /g, "+")}:wght@${f.weight || 400};700&display=swap`);
+  if (f.source === "fontshare") fontLinks.add(`https://api.fontshare.com/v2/css?f[]=${fam.toLowerCase().replace(/ /g, "-")}@${f.weight || 400},700&display=swap`);
+}
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  Object.entries(attrs).forEach(([k, v]) => (k === "style" ? Object.assign(n.style, v) : (n[k] = v)));
+  kids.flat().forEach((k) => n.append(k));
+  return n;
+};
+const block = (title, ...kids) => el("section", {}, el("h3", { textContent: title }), ...kids);
+
+document.title = `Directions — ${BOARD.project}`;
+document.getElementById("title").textContent = `${BOARD.project} — directions`;
+document.getElementById("brief").textContent = BOARD.brief;
+
+const board = document.getElementById("board");
+BOARD.directions.forEach((d) => {
+  loadFont(d.type.display); loadFont(d.type.body);
+  const display = `'${d.type.display.family}', serif`;
+  const body = `'${d.type.body.family}', sans-serif`;
+  board.append(el("article", { className: "dir" },
+    el("div", { className: "hero", style: { background: d.heroColors.bg, color: d.heroColors.fg } },
+      el("span", { className: "tag", textContent: d.tag }),
+      el("h2", { textContent: d.name, style: { fontFamily: display } }),
+      el("p", { className: "concept", textContent: d.concept, style: { fontFamily: body } })),
+    block("Story", el("ol", {}, d.story.map((s) => el("li", { textContent: s })))),
+    block("Signature moment", el("p", { textContent: d.signature })),
+    block("Palette", el("div", { className: "swatches" }, d.palette.map((c) =>
+      el("div", { className: "sw" }, el("div", { style: { background: c.hex } }),
+        el("small", { textContent: `${c.name} ${c.hex}\n${c.role}` }))))),
+    block("Type", el("div", { className: "specimen" },
+      el("div", { className: "display", textContent: d.type.sample, style: { fontFamily: display, fontWeight: d.type.display.weight } }),
+      el("p", { className: "body", textContent: "Body copy sits here at reading size, so the pairing can be judged in context.", style: { fontFamily: body } }),
+      el("small", { textContent: `${d.type.display.family} (${d.type.display.source}) + ${d.type.body.family} (${d.type.body.source})` }))),
+    block("Motion & 3D", el("dl", {}, el("dt", { textContent: "Motion" }), el("dd", { textContent: d.motion }),
+      el("dt", { textContent: "3D" }), el("dd", { textContent: d.threeD }))),
+    block("Layout", el("pre", { textContent: d.layout })),
+    block("References", el("div", { className: "refs" }, d.refs.map((r) =>
+      el("figure", {}, el("img", { src: r.src, alt: r.caption, loading: "lazy" }), el("figcaption", { textContent: r.caption })))))
+  ));
+});
+fontLinks.forEach((href) => document.head.append(el("link", { rel: "stylesheet", href })));
+</script>
+</body>
+</html>
