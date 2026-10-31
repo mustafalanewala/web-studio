@@ -68,7 +68,8 @@ When a brief says "playful", find a premium brand that is playful (DTC food, des
 ## 10. Scoring rubric (each 1–5; ship only when every line is 4 or 5)
 | Criterion | 5 looks like |
 |---|---|
-| Imagery | Every image is benchmark quality and graded as one shoot |
+| Story | In 5 seconds a stranger knows what it is, who it's for, why it's different; every section serves a beat |
+| Imagery | Every image (or labelled placeholder) is benchmark quality, graded as one shoot, and on palette |
 | Typography | Confident scale, hand-set headlines, perfect details |
 | Layout & space | Clear grid, generous space, one focal point per screen |
 | Colour | Restrained, subject-driven palette; accent only where it acts |

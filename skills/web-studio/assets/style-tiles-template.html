@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style tiles</title>
+<style>
+  /* Neutral board chrome; each tile carries its own visual system. */
+  * { box-sizing: border-box; margin: 0; }
+  body { font: 15px/1.5 system-ui, sans-serif; color: #1d1d1f; background: #ececee; }
+  header { padding: 32px 40px 8px; max-width: 1200px; }
+  header h1 { font-size: 22px; }
+  header dl { display: grid; grid-template-columns: 120px 1fr; gap: 4px 16px; margin-top: 14px; color: #444; }
+  header dt { color: #888; }
+  .tiles { display: grid; grid-template-columns: repeat(3, minmax(380px, 1fr)); gap: 24px; padding: 24px 40px 64px; }
+  .tile { border-radius: 14px; overflow: hidden; box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 12px 40px rgba(0,0,0,.08); }
+  .tile .meta { padding: 14px 20px; background: #fff; border-bottom: 1px solid #e5e5e5; }
+  .tile .meta strong { display: block; font-size: 16px; }
+  .tile .meta span { color: #666; font-size: 13px; }
+  .hero { padding: 40px 28px; min-height: 360px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: end; }
+  .hero h2 { line-height: .92; }
+  .media { border-radius: var(--r, 0); min-height: 260px; background-size: cover; background-position: center; display: flex; align-items: flex-end; padding: 10px; font: 11px/1.3 system-ui; }
+  .media small { background: rgba(0,0,0,.45); color: #fff; padding: 4px 6px; border-radius: 4px; }
+  .row { padding: 22px 28px; border-top: 1px solid rgba(127,127,127,.18); }
+  .row h3 { font: 600 11px system-ui; opacity: .6; margin-bottom: 10px; text-transform: none; }
+  .swatches { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sw { width: 64px; }
+  .sw i { display: block; height: 44px; border-radius: 6px; border: 1px solid rgba(127,127,127,.25); }
+  .sw small { display: block; font: 10px/1.3 system-ui; margin-top: 4px; opacity: .8; }
+  .buttons { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .section-demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .section-demo .num { font-size: 34px; line-height: 1; }
+  @media (max-width: 1200px) { .tiles { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="project"></h1>
+  <dl id="narrative"></dl>
+</header>
+<main class="tiles" id="tiles"></main>
+<script>
+/* Fill this object. Copy comes from _studio/content.md; media are real files or placeholders with a shot description. */
+const BOARD = {
+  project: "PROJECT — style tiles",
+  narrative: { "Big idea": "…", "Promise": "…", "Voice": "…", "Story arc": "…" },
+  tiles: [
+    {
+      name: "System A", why: "Why this system fits the narrative",
+      colors: { bg: "#f4f1ec", fg: "#141210", accent: "#b4442a", muted: "#8a8178" },
+      palette: [ { name: "Paper", hex: "#f4f1ec" }, { name: "Ink", hex: "#141210" }, { name: "Accent", hex: "#b4442a" } ],
+      display: { family: "Fraunces", source: "google", weight: 600, size: "54px", tracking: "-0.02em", case: "none" },
+      body: { family: "Instrument Sans", source: "google", weight: 400 },
+      radius: "0px",
+      headline: "The real hero headline",
+      sub: "The real subhead from content.md.",
+      cta: "Primary action", secondary: "Secondary action",
+      media: { src: "", shot: "Placeholder: macro of the product on linen, soft window light from the left", grade: "contrast(1.05) saturate(.95)" },
+      proof: [ { n: "48h", t: "from roaster to door" }, { n: "12 kg", t: "per batch" }, { n: "4.9", t: "from 1,200 reviews" } ]
+    }
+  ]
+};
+
+const fonts = new Set();
+const font = (f) => {
+  if (f.source === "google") fonts.add(`https://fonts.googleapis.com/css2?family=${f.family.replace(/ /g, "+")}:wght@400;${f.weight || 400};700&display=swap`);
+  if (f.source === "fontshare") fonts.add(`https://api.fontshare.com/v2/css?f[]=${f.family.toLowerCase().replace(/ /g, "-")}@400,${f.weight || 400},700&display=swap`);
+};
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  Object.entries(attrs).forEach(([k, v]) => (k === "style" ? Object.assign(n.style, v) : (n[k] = v)));
+  kids.flat().forEach((k) => n.append(k));
+  return n;
+};
+
+document.title = BOARD.project;
+document.getElementById("project").textContent = BOARD.project;
+const dl = document.getElementById("narrative");
+Object.entries(BOARD.narrative).forEach(([k, v]) => dl.append(el("dt", { textContent: k }), el("dd", { textContent: v })));
+
+const root = document.getElementById("tiles");
+BOARD.tiles.forEach((t) => {
+  font(t.display); font(t.body);
+  const D = `'${t.display.family}', serif`, B = `'${t.body.family}', sans-serif`;
+  const c = t.colors;
+  const media = t.media.src
+    ? el("div", { className: "media", style: { backgroundImage: `url(${t.media.src})`, filter: t.media.grade || "", "--r": t.radius } })
+    : el("div", { className: "media", style: { background: `linear-gradient(135deg, ${c.muted}, ${c.bg})`, "--r": t.radius } }, el("small", { textContent: t.media.shot }));
+  root.append(el("article", { className: "tile", style: { background: c.bg, color: c.fg } },
+    el("div", { className: "meta" }, el("strong", { textContent: t.name }), el("span", { textContent: t.why })),
+    el("div", { className: "hero" },
+      el("div", {},
+        el("h2", { textContent: t.headline, style: { fontFamily: D, fontWeight: t.display.weight, fontSize: t.display.size, letterSpacing: t.display.tracking, textTransform: t.display.case } }),
+        el("p", { textContent: t.sub, style: { fontFamily: B, marginTop: "14px", maxWidth: "32ch", opacity: .8 } })),
+      media),
+    el("div", { className: "row" }, el("h3", { textContent: "Colour" }), el("div", { className: "swatches" },
+      t.palette.map((p) => el("div", { className: "sw" }, el("i", { style: { background: p.hex } }), el("small", { textContent: `${p.name} ${p.hex}` }))))),
+    el("div", { className: "row" }, el("h3", { textContent: "Actions" }), el("div", { className: "buttons" },
+      el("span", { textContent: t.cta, style: { fontFamily: B, background: c.accent, color: c.bg, padding: "12px 22px", borderRadius: t.radius === "0px" ? "0" : "999px" } }),
+      el("span", { textContent: t.secondary, style: { fontFamily: B, borderBottom: `1px solid ${c.fg}`, paddingBottom: "2px" } }))),
+    el("div", { className: "row" }, el("h3", { textContent: "Proof section sample" }), el("div", { className: "section-demo" },
+      t.proof.map((p) => el("div", {}, el("div", { className: "num", textContent: p.n, style: { fontFamily: D, fontWeight: t.display.weight } }), el("p", { textContent: p.t, style: { fontFamily: B, fontSize: "13px", opacity: .75 } }))))),
+    el("div", { className: "row" }, el("h3", { textContent: "Type" }),
+      el("p", { textContent: `${t.display.family} (${t.display.source}) + ${t.body.family} (${t.body.source})`, style: { fontFamily: B, fontSize: "13px" } }))
+  ));
+});
+fonts.forEach((href) => document.head.append(el("link", { rel: "stylesheet", href })));
+</script>
+</body>
+</html>

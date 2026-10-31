@@ -11,24 +11,42 @@ Feeling: [3 adjectives] — not: [what it must not feel like]
 Constraints: [assets available, must-have sections, deadline, existing stack]
 ```
 
-## Reference hunt (Phase 1)
+## Narrative (Phase 1)
 ```
-Find 10–15 live references for a [industry] site that should feel [adjectives].
-Search [galleries from resources.md → Where to look] by industry and mood.
-For each keeper open the real site, screenshot the first viewport at 1440×900 and its best section,
-and note what to learn (layout / type / motion / 3D / colour). Skip anything that is just "a nice template".
+Using strategy.md, write the one-page narrative for [brand]: audience + tension, insight (use 2–3 of the
+insight methods), positioning sentence, big idea, promise, 3 proof facts, personality (this-not-that ×3),
+voice rules + 2 sample lines, story arc with beats mapped to sections, messaging hierarchy, sitemap.
+Run the so-what, competitor-swap, repeat and proof tests; rewrite anything that fails. Keep it to one page.
 ```
 
-## Three directions (Phase 2)
+## Content (Phase 2)
 ```
-From the brief and the top-tier references, propose 3 client-grade directions that differ on at least 3 axes
-(directions.md → Axes): one safe-strong, one bold, one wildcard concept.
-Each: name, one-line concept, 3–6 beat story, signature moment, benchmark site (and what it takes from it),
-asset strategy (which imagery carries it, from where, how it's graded), palette (4–6 named colours + accent job),
-free type pairing with roles, motion language, 3D level and why (only if it passes 3d.md → Quality floor),
-ASCII layout of hero + one key section, 3–5 references.
-Then check each against the generic defaults in the frontend-design skill and the instant-fail list in
-quality-bar.md; revise anything that reads as a default, a template or a cartoon.
+Take the [site type] blueprint, order its sections by the story arc, and write final copy for every section
+with copy.md: headline (vary the approach per section), subhead, body, CTA wording, microcopy.
+Climb the specificity ladder on every line; mark unknown facts [[client: …]]; run the editing pass.
+Then list every image/video slot with a shot description, aspect and min width in media.ts and assets.md.
+```
+
+## Style tiles (Phase 4)
+```
+Create 3 visual systems for the same real content that differ on at least 3 axes (directions.md → Axes).
+Each: name + why it fits the narrative, palette (60/30/10, named hex, accent job), type pair + scale,
+buttons/links, radius, image treatment (grade recipe; real media, stock or placeholder shot), a mini hero
+and a proof section using the real headline and copy. Check each against quality-bar.md's instant fails
+and frontend-design's default traits; revise anything generic before showing.
+```
+
+## Hero options (Phase 5)
+```
+In the chosen system, build 3 hero variants at /studio/heroes that differ in composition (e.g. statement type,
+asymmetric type + image, full-bleed media with caption grid) and copy angle (claim, reframe, contrast).
+Use real copy and <Media> slots. Screenshot each at 1440×900 and 390×844, score with the rubric, show all three.
+```
+
+## Calibration references (Phase 3, optional)
+```
+Find 5–8 live references from at least 3 source types (resources.md) for a [site type] that should feel
+[adjectives]. Close pop-ups before screenshots. Pick 1–2 benchmarks and note exactly what quality bar they set.
 ```
 
 ## Section build

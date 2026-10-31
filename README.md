@@ -1,15 +1,19 @@
 # web-studio
 
-A Claude Code skill that designs and builds award-level websites — brand, corporate, product/SaaS, real estate, portfolio, agency, campaign — that are 3D, animated, scroll-driven and concept-led instead of template-generic.
+A Claude Code skill that works like a small brand studio: strategy, story, copy, design and build for brand, corporate, e-commerce, SaaS, real estate, hospitality, portfolio and campaign websites. Modern and animated, with 3D only where it earns its place, and never template-generic.
 
 It runs a studio workflow:
 
-1. **Brief** — asks a few short questions (what, who, goal, feeling, assets)
-2. **Live reference hunt** — opens real galleries (Recent, Awwwards, Land-book, SiteInspire…) in a browser and screenshots 10–15 relevant sites
-3. **Three directions** — a moodboard page with three genuinely different concepts: story, signature moment, palette, free fonts, motion, 3D level, layout and references
-4. **Plan** — tokens, section map and a precise spec for every moving section
-5. **Build** — Next.js + Tailwind + GSAP/ScrollTrigger + Lenis + Motion + React Three Fiber
-6. **Strict quality gate** — Lighthouse, accessibility, reduced motion, weak-GPU frame rate, screenshots at three sizes
+1. **Brief and assets:** a few short questions, plus what photos, video and brand material exist.
+2. **Strategy and story:** a one-page narrative (audience tension, insight, positioning, big idea, proof, voice, story arc, sitemap) that you approve.
+3. **Content:** final copy for every section, written before any layout, plus a media list with a shot description for every image and video.
+4. **Calibration (optional):** a short look at 5–8 benchmark sites from several source types.
+5. **Style tiles:** three visual systems applied to your real content; you pick one.
+6. **Hero options:** three working heroes; you pick one.
+7. **Build, section by section:** Next.js, Tailwind, GSAP, Lenis and Motion (React Three Fiber only if 3D passes the quality floor). Each section is screenshotted, critiqued and scored before the next one starts.
+8. **Strict quality gate:** a client-grade rubric, Lighthouse, accessibility, reduced motion and screenshots at three sizes.
+
+**Missing photos or video never block the build.** Every media slot shows a designed placeholder that describes the shot needed. Drop real files into `media-inbox/` and Claude swaps them in. At handoff you also get a shot list for the photographer.
 
 Everything it recommends is free for commercial use and was verified on 2026-10-31.
 
@@ -51,15 +55,18 @@ Open Claude Code in an empty folder (or an existing site) and ask for a website,
 - "Redesign our agency site — it looks like every other template"
 - "Build a product landing page for our AI note-taking app with a 3D hero"
 
-Or start it explicitly with `/web-studio`. Claude will ask the brief questions, gather references, show you three directions to choose from, then plan and build the one you pick.
+Or start it explicitly with `/web-studio`. Claude asks the brief questions, writes the narrative and copy for your approval, shows three style tiles and three hero options, then builds section by section.
 
 Working files are kept in a `_studio/` folder inside your project:
 ```
 _studio/
-  refs/            reference screenshots
-  moodboard.html   the three directions
-  plan.md          tokens, section map, section specs, asset licences, budgets
-  qa/              screenshots from the quality gate
+  narrative.md       strategy and story (approved first)
+  content.md         final copy for every section
+  assets.md          every image/video slot: shot, size, status
+  style-tiles.html   the three visual systems
+  refs/              calibration references (optional)
+  qa/                screenshots from the quality gate
+media-inbox/         drop your photos and videos here at any time
 ```
 
 Tips:
@@ -73,7 +80,13 @@ Tips:
 skills/web-studio/
   SKILL.md                     workflow and rules
   references/
-    resources.md               verified free library: galleries, fonts, icons, 3D assets, shaders,
+    strategy.md                narrative: insight, positioning, big idea, proof, voice, story arcs, tests
+    copy.md                    copy system: voice, headlines, section patterns, microcopy, editing pass
+    blueprints.md              what each site type needs, section by section
+    design-principles.md       hierarchy, grid, type, space, colour, compositions, critique loop
+    imagery.md                 asset requests, media manifest, placeholders, swapping media, shot list
+    quality-bar.md             client-grade bar, instant fails, scoring rubric
+    resources.md               verified free library: galleries, studios, fonts, icons, 3D assets,
                                components, motion libraries, learning, licence traps
     directions.md              16 visual directions, 10 story structures, signature moments by site type
     recipes.md                 35 section recipes with mobile and reduced-motion versions
@@ -83,7 +96,10 @@ skills/web-studio/
     3d.md                      when 3D earns its place, R3F setup, asset pipeline, performance tiers
     quality.md                 the strict quality gate
   assets/
-    moodboard-template.html    the three-directions board
+    style-tiles-template.html  the three visual systems board
+    media.tsx                  <Media> component: real image/video or a labelled placeholder
+    media-manifest.ts          media slot list (single source of truth)
+    moodboard-template.html    optional board for calibration references
 research/                      verification notes behind the library (2026-10-31)
 ```
 
