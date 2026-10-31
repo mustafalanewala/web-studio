@@ -54,7 +54,7 @@ Copy `assets/moodboard-template.html` (in this skill's folder) to `./_studio/moo
 Before code, write `./_studio/plan.md`:
 - Tokens: colour (CSS variables), type scale, spacing, radius, motion durations/easings
 - Section map: every section with its beat, content, recipe (`references/recipes.md`) and what moves
-- Signature moment spec: technique, fallback for reduced motion, mobile and weak GPUs
+- Signature moment spec, written with the anatomy in `references/prompt-craft.md` (concept-metaphor, scene with exact numbers, one driving parameter, beat-by-beat choreography, physics feel, NOTs with reasons, devices and fallbacks). Every other moving section gets a short spec in the same shape.
 - Asset list with source + licence for every font, image, model, icon
 - Performance budget (from `references/quality.md`)
 
@@ -76,4 +76,9 @@ List: stack and versions, every external asset with licence, how to swap content
 - `references/motion.md` — motion system, GSAP + Lenis setup in Next.js, SplitText, pinning, CSS scroll-driven animations, View Transitions, reduced motion
 - `references/3d.md` — when 3D earns its place, R3F setup, scroll-driven cameras, asset pipeline, shaders, performance tiers and fallbacks
 - `references/quality.md` — the strict gate: performance, accessibility, motion, cross-device, screenshots, licences
+- `references/prompt-craft.md` — how award-level section specs are written: the 12 moves, the spec anatomy, a worked example, a pre-build checklist. Read before writing any section spec or any prompt the user asks for
 - `references/prompts.md` — reusable prompt templates for briefs, directions, sections, 3D "model-first" builds and self-critique
+
+## Installed companion skills
+- `img2threejs` — rebuild an object from a reference image as procedural three.js (use when a 3D hero object is planned and no model file exists)
+- `teardown` — interactive 3D machine/mechanism simulators and 60 fps explainer videos (use for "how it works" sections or launch films; output is a standalone page to embed or port)

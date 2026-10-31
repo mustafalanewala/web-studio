@@ -29,8 +29,9 @@ Then check each against the generic defaults in the frontend-design skill and re
 ```
 
 ## Section build
+Write the spec first with the anatomy in `prompt-craft.md`, then:
 ```
-Build the [section] for [direction name] using recipe [#/name] from recipes.md.
+Build the [section] for [direction name] using recipe [#/name] from recipes.md and the spec below.
 Content: [real copy]. Beat in the story: [what this section must make the visitor feel/know].
 Motion: [what moves, duration token, easing token]; reduced-motion version: [static behaviour]; mobile: [behaviour].
 Use only the plan's tokens. Screenshot at 375 and 1440 when done and compare with the moodboard.

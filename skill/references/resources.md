@@ -108,7 +108,7 @@ Use components as raw material: restyle to the direction's tokens. Out-of-the-bo
 Codrops tutorials + demos (MIT unless stated) · GSAP showcase + codepen.io/GreenSock · three.js examples (MIT) · R3F docs · Maxime Heckel's blog (shaders, post-processing) · Olivier Larose (Next.js + GSAP/Motion with source) · Yuri Artiukh / akella (WebGL effects) · Wawa Sensei (R3F) · Discover three.js · Frontend.horse · Josh Comeau. Three.js Journey is paid (a few free lessons).
 
 ## Prompt / section shops (mostly paid — free items only)
-- motionin.design: 4 free sections (Atlas, Pantheon, Folio, Cinema Reel) — study the demos as motion reference
+- motionin.design: 54 sections; every card shows the opening of its spec publicly (a great style corpus — see `prompt-craft.md`). 9 are free but copying any prompt needs a (free) sign-in: Atlas, Pantheon, Folio, Cinema Reel, Momentum Slider, Drag Gallery, Membrane, Shape Trail, Liquid Type. The rest are $9/mo. Demos are viewable without login
 - scrolltide.co: a few free templates (e.g. SELENE)
 - motionsites.ai: some free prompts; hype-heavy marketing, treat claims with caution
 
@@ -122,7 +122,7 @@ modulify.ai (paid builder) · wonderlist.design (paid Figma) · iconly.design (3
 - Poly Pizza and Sketchfab: licence per model; record CC-BY attribution in the handoff.
 - Gallery screenshots are third-party work: reference only.
 
-## Optional third-party skills (reviewed 2026-10-31)
+## Third-party skills (reviewed 2026-10-31; img2threejs v2.0.0 and teardown e7e668c are installed)
 | Skill/repo | Use | Install |
 |---|---|---|
 | img2threejs (Apache-2.0, ~19.9k stars) | Rebuild an object from a reference image as procedural three.js code | `npx img2threejs install --host claude`. Do NOT install its `img2` harness (edits ~/.claude/settings.json, links a global binary). Its SKILL.md is ~34 KB |
