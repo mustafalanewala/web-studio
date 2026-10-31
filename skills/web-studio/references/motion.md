@@ -126,5 +126,18 @@ View Transitions: same-document transitions work in all modern browsers (`docume
 - Horizontal pinned sections become native swipe or vertical stacks.
 - Halve parallax distances and stagger counts; shorter durations.
 
+## Gotchas (where implementations usually break)
+- **iOS viewport units**: inside full-screen interactive sections use `dvh`, never `vh`. `vh` uses the largest viewport while `window.innerHeight` follows the visible one, so JS pixel math and CSS layout drift apart when the Safari URL bar shows.
+- **touch-action intersects down the tree**: put `touch-action: none` on the element that owns the drag (the track), not on the section. Otherwise a scrollable child panel with `pan-y` can't scroll on mobile.
+- **Native listeners ignore React's stopPropagation**: if drag is handled with `addEventListener` on the section (needed for pointer capture), mark buttons and panels with a `data-no-drag` attribute and skip drag start when `target.closest("[data-no-drag]")`.
+- **Pointer capture and cancel**: call `setPointerCapture` on down so a drag continues off the element; handle `pointercancel` (system gesture, second finger) by resetting, or the UI freezes mid-drag.
+- **Click vs drag**: treat a press that moved less than ~4–8 px as a click; anything more is a drag.
+- **Wheel**: register with `{ passive: false }` to call `preventDefault`; clamp each event's delta (e.g. ±200 px); for one-step-per-flick on trackpads, swallow the decaying momentum tail and re-arm only on a new spike.
+- **Hot loops use refs, not state**: per-frame values live in refs and are written straight to `style`; React state only for things that change the markup (active index, open panel).
+- **Loop wrap**: for infinite carousels render several copies and silently shift index and offset by a whole set when near an edge; also shift any in-progress drag's start point.
+- **Two transforms on one element fight**: if an element is centred with `translate(-50%)` and also animated, nest it (outer centres, inner animates).
+- **Preload what an entrance flies past**: images passed during an intro animation must be preloaded or they paint as empty boxes.
+- **Pause when hidden**: stop the rAF loop on `visibilitychange` and when the section is off-screen (IntersectionObserver).
+
 ## Clichés to avoid
 Fade-up on every section · letters flying in on every heading · cursor blob on corporate sites · 4-second preloaders · scroll hijack that fights the trackpad (keep Lenis lerp ~0.1) · motion with no relation to the concept.

@@ -1,6 +1,6 @@
 # Prompt craft — how award-level section specs are written
 
-Learned from studying the 54 section specs on motionin.design (public openings, 2026-10-31) and the teardown method. The difference between a generic section and a remarkable one is almost always the spec. Write every signature section spec this way before building it, and use the same style when the user asks for a prompt.
+Learned from studying the 54 section specs on motionin.design (public openings plus three full free specs, 2026-10-31) and the teardown method. The difference between a generic section and a remarkable one is almost always the spec. Write every signature section spec this way before building it, and use the same style when the user asks for a prompt.
 
 ## The 12 moves
 
@@ -78,6 +78,42 @@ CONTENT: AZURE · Dubai Creek Harbour · 60 floors · Handover Q4 2028 · "Regis
 DEVICES: mobile — 150vh scroll, 30 floors, no camera move; reduced motion — the finished tower
 lit at dusk as a still with the counter at 60; low GPU — a 60-frame image sequence instead of 3D.
 ```
+
+## Long-form spec (for the signature section)
+The short anatomy above is enough for supporting sections. The signature moment gets a long-form spec whose stated goal is: *another agent could rebuild it pixel-for-pixel from this document alone.* Studying full free specs (2026-10-31) showed the same skeleton every time:
+
+1. **Title line**: `Name — what it is, with its 2–3 defining techniques`.
+2. **Experience summary**: one paragraph of what the visitor sees and does, then a **quality bar** note: what makes this real and not a cheap imitation (e.g. a truly lit sphere rather than a sticker, real refraction rather than blur, every item pickable rather than a few hotspots).
+3. **Stack**: exact libraries and what each one is allowed to do (e.g. GSAP only for the entrance and open/close glides, one rAF loop for everything per-frame), plus what *not* to use.
+4. **Beats**: a numbered timeline of the experience: load → resting state → each interaction → open state → close. Each beat says what moves, from what to what, over how long.
+5. **Assets**: a table of every file: purpose, format, size, source and licence, plus loading rules (colour space, filtering, preload, priority for the first image).
+6. **Data model**: typed interfaces, a real sample record, the empty/missing-content state, display-name shorteners and search aliases.
+7. **Tokens**: colours as a table (value + where used), fonts with exact weights and where each is used, grain/dither settings.
+8. **Layer stack**: a DOM tree and a z-index table, saying which layers are click-through.
+9. **Geometry**: exact formulas for positions and sizes, including responsive ones (e.g. camera distance from aspect ratio, ring radius from the shorter screen side).
+10. **Per-frame state**: formulas for scale, opacity, blur and z from the one driving value (e.g. a smoothstepped "how close to the focus slot" factor).
+11. **Core technique**: the shader / picking / physics code or pseudocode, with **⚠ gotchas** marked where implementations usually break.
+12. **The loop**: pseudocode for the single animation loop, including pausing when the tab is hidden or the section is off-screen.
+13. **Inputs**: every input with exact sensitivities and thresholds (drag-per-step, click-vs-drag distance, wheel threshold, momentum decay, keyboard map, touch-action, pointer capture and cancel).
+14. **States and switching**: open/close layouts with pixel values per breakpoint, and how switching between two items animates without the two overlapping into a blur.
+15. **Every animation**: on load, on open, on close, on switch — durations, easings, delays and keyframes. Closes always ease out; Esc backs out one level at a time.
+16. **Responsiveness**: a desktop vs mobile table; name the exact sizes to verify (e.g. 390×844 and 1440×900).
+17. **Tunables**: every magic number in one block.
+18. **Accessibility and reduced motion**: what is skipped, what still works.
+19. **Acceptance checklist**: testable checkboxes covering every beat and device.
+20. **Why it works**: a few lines on the judgement calls, so later edits keep the intent.
+
+### Lessons from full specs
+- **Restraint is written down.** "Everything rests, nothing auto-plays gimmicks", "one palette, two fonts", "no saturated UI colour": the calm is specified, not hoped for.
+- **Velocity drives effects.** Motion blur and scanlines scale with current speed, loud mid-flight and silent on landing, so effects read as physics rather than decoration.
+- **Asymmetric enter and exit.** The incoming item fades in only once it's half in view; the outgoing item stays solid and races ahead with extra parallax. Old gives way to new instead of dissolving.
+- **Switching without garbling.** When one item replaces another, the old content lifts and fades fast, the new content rises in with a delay; two titles never sit on top of each other.
+- **Live commit.** The index changes the moment a gesture crosses half a step, not after an idle timer, so it feels like it snaps in your hand; the spring settles after.
+- **One flick, one step.** Trackpad inertia is handled explicitly: accumulate the delta, step once at a threshold, swallow the decaying momentum tail, re-arm only on a real re-acceleration.
+- **Mobile trims content, not features.** Secondary decorations hide on phones; the core interaction works by touch with the same physics; panels become bottom sheets with safe-area padding.
+- **Decide theme behaviour on purpose.** A section over dark imagery may stay dark in light mode; say so and why.
+- **Name the browser limits.** If an effect is Chromium-only (e.g. SVG-filter backdrop refraction), specify the fallback for Safari and Firefox.
+- **Graceful empties.** Items without content still respond and show a calm "coming soon" state.
 
 ## Checklist before building from a spec
 - Could another model build something *generic* from this text? If yes, add numbers, a NOT, or a reason.
