@@ -1,5 +1,6 @@
 ---
 name: web-studio
+license: MIT
 description: Award-level website design and build for any brand, corporate, product/SaaS landing, real-estate/off-plan, portfolio, agency, campaign or event site — 3D, animated, scroll-driven, story/concept-led. Use whenever the user asks to design, build, redesign or concept a public-facing website or landing page, a hero/section, or wants it to look modern, premium, 3D, animated or "not generic". Runs a brief → live reference hunt → 3 moodboard directions → build → strict QA workflow with a verified library of free references, fonts, 3D assets and motion patterns. Not for internal app UIs, dashboards or CRM screens.
 ---
 
