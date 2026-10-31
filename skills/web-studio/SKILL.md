@@ -30,8 +30,15 @@ Ask with AskUserQuestion, max 4 questions per round, 2 rounds at most. Skip anyt
 Then write a 5-line brief back: subject, audience, goal, feeling, constraints. Confirm before moving on.
 
 ### Phase 1 — Top-tier reference hunt
-Collect 10–15 live references with Playwright. **At least 8 must be top-tier**: Awwwards Site of the Month/Year or Developer Award, FWA, CSSDA winners, or category-leading brands whose sites are clearly premium (judge the screenshot against `quality-bar.md`; a Site of the Day badge alone is not proof). The rest may be functional references (e.g. a great shop flow).
-- Search by industry and feeling; also search adjacent premium categories (e.g. for coffee: premium food & drink DTC, kitchen equipment, fragrance).
+Collect 10–15 live references with Playwright. **At least 8 must be top-tier**, judged by the screenshot against `quality-bar.md`, not by a badge. Draw from **at least 4 of these source types**; never one gallery only:
+1. **Category leaders:** the best brands in the brief's industry and in adjacent premium categories (for coffee: specialty roasters, premium DTC food, kitchen equipment, fragrance). Find them by name and open their sites directly.
+2. **Creative studios' work:** portfolios of top studios, where the best 3D and interactive client sites live (`resources.md` → *Studios*).
+3. **Curated galleries:** Recent, Land-book, SiteInspire, Lapa Ninja, Httpster, Maxibestof, One Page Love, Minimal Gallery.
+4. **Award galleries:** Awwwards (prefer Site of the Month/Year and Developer Award), The FWA, CSS Design Awards, Codrops Webzibition.
+5. **3D showcases:** the three.js homepage showcase, Spline community, Codrops demos, for what's technically possible.
+6. **The user's own examples** from the brief.
+
+Functional references (e.g. a great shop flow) can fill the rest.
 - Open the real site, close cookie banners and email pop-ups (Escape, Accept, or the close button) **before** screenshotting the first viewport at 1440×900 and one signature section. Note *why* it matters.
 - Save to `./_studio/refs/NN-site-name.png`. If the Playwright tool can only write inside its own workspace, save there and move the files.
 - Pick the **2 benchmarks** the work must match or beat.

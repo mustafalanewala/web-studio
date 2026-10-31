@@ -10,6 +10,16 @@ Every entry was checked live. "No login" = browsable with Playwright without an 
 - **Recent (ex-Godly)'s cards link to designers' X profiles,** not the sites. Use it for browsing, and get URLs elsewhere.
 - **Land-book blocks plain fetching;** use Playwright.
 
+## Studios (top client work, especially 3D and interactive)
+Open the studio site, go to their work or case studies, and visit the live client sites. Checked live 2026-10-31 (✓) or to confirm in Playwright (bot-protected):
+- Lusion — lusion.co ✓ · WebGL product and brand experiences
+- Active Theory — activetheory.net ✓ · immersive 3D campaigns
+- Immersive Garden — immersive-g.com ✓ · luxury 3D brand sites
+- darkroom.engineering (ex Studio Freight) — darkroom.engineering ✓ · smooth-scroll, editorial, commerce
+- Unseen Studio — unseen.co ✓ · art-directed brand worlds
+- Resn — resn.co.nz · Locomotive — locomotive.ca (confirm in Playwright)
+- 3D showcases: threejs.org (homepage project grid), spline.design/community, Codrops demos (confirm in Playwright)
+
 ## Where to look (by need)
 
 | Need | Go to first | Then |
