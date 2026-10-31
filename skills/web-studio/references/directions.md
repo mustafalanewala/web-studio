@@ -46,7 +46,7 @@ Each: what it is · fits · type ideas (free) · palette approach · motion · s
 
 **Diorama / miniature world** · stylised 3D scene, tilt-shift, toy-like · city projects, masterplans, events, games · rounded display (Funnel Display, Bricolage) · saturated but limited · camera tours between landmarks · masterplan you fly through · needs plain-nav fallback.
 
-**Tactile / material** · paper, grain, fabric, clay; physical feel · craft, food, wellness, stationery · Young Serif, Gambetta, Fraunces (soft axis) · natural pigments · physics-y, springy, hand-made · draggable objects, paper-fold transitions · avoid stock "grain + purple gradient".
+**Tactile / material** · paper, grain, fabric, clay; physical feel through **photography of real materials** · craft, food, wellness, stationery · Young Serif, Gambetta, Fraunces (soft axis) · natural pigments · slow, weighted, hand-made · macro material shots, paper-fold transitions · avoid stock "grain + purple gradient" and kraft-and-crayon cartoon looks.
 
 **Brutalist / raw** · system fonts, visible structure, unexpected · agencies, artists, publications · monospaced or grotesk at extremes · black/white + one alarm colour · abrupt cuts, no easing · unconventional navigation · must still be readable and accessible.
 
@@ -54,7 +54,7 @@ Each: what it is · fits · type ideas (free) · palette approach · motion · s
 
 **Organic / soft futurism** · blobs grown from data, soft light, glass · wellness tech, biotech, sustainability · Satoshi, Fraunces · desaturated naturals + light · fluid shader backgrounds, slow morphs · living hero shape tied to a real metric · avoid aurora wallpaper.
 
-**Bold colour-block / playful** · flat saturated fields, big shapes, characters · consumer apps, F&B, kids, fintech for youth · Bricolage Grotesque, Syne, Cabinet Grotesk · 3–5 loud colours with rules · springy, bouncy, cursor-reactive · sticker-like elements you can drag · avoid "Memphis" pastiche.
+**Bold colour-block / playful-premium** · confident saturated fields, big type, real product photography on colour, wit in the copy · DTC food & drink, design objects, consumer apps · Bricolage Grotesque, Syne, Cabinet Grotesk · 2–3 colours with strict rules · crisp, confident; at most one playful interaction · colour-blocked product shots, oversized type · benchmark against a premium playful brand · avoid stickers, characters, hard offset shadows, toy physics and "Memphis" pastiche (see `quality-bar.md` → *Playful is not cartoon*).
 
 **Dark tech precision** · grids, monospace data, blueprint lines · dev tools, AI infra, security, aerospace · Geist + Geist Mono · near-black with a precise accent (not acid green by default) · line-drawing reveals, number tickers · live system visualisation in hero · avoid the "black + green" default.
 

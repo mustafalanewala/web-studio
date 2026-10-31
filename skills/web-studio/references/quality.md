@@ -51,5 +51,13 @@ Fix collisions with real numbers in the layout or model, never by hiding them wi
 - Every font, image, model, icon, HDRI listed with source and licence; CC-BY attributions present
 - Nothing copied from gallery reference sites
 
+## 7. Client-grade bar
+- Score the whole page with the rubric in `quality-bar.md` (imagery, typography, layout, colour, motion, craft, copy, benchmark parity). Every line must be 4 or 5.
+- Put the hero and the signature section side by side with the benchmark at 1440 and 390.
+- Check the instant-fail list in `quality-bar.md`; any hit is a blocker.
+
 ## Report to the user
-Stills (3 widths + reduced motion), Lighthouse mobile/desktop scores, frame rate under throttle, what failed and what was fixed, any accepted exceptions.
+- Stills at 3 widths plus the reduced-motion version.
+- Side-by-side comparisons with the benchmark, and the rubric scores.
+- Lighthouse mobile and desktop scores, and the frame rate under CPU throttle.
+- What failed and what was fixed, plus any accepted exceptions.

@@ -21,11 +21,14 @@ and note what to learn (layout / type / motion / 3D / colour). Skip anything tha
 
 ## Three directions (Phase 2)
 ```
-From the brief and references, propose 3 directions that differ on at least 3 axes (directions.md → Axes):
-one safe-strong, one bold, one wildcard concept.
-Each: name, one-line concept, 3–6 beat story, signature moment, palette (4–6 named colours + accent job),
-free type pairing with roles, motion language, 3D level and why, ASCII layout of hero + one key section, 3–5 references.
-Then check each against the generic defaults in the frontend-design skill and revise anything that reads as a default.
+From the brief and the top-tier references, propose 3 client-grade directions that differ on at least 3 axes
+(directions.md → Axes): one safe-strong, one bold, one wildcard concept.
+Each: name, one-line concept, 3–6 beat story, signature moment, benchmark site (and what it takes from it),
+asset strategy (which imagery carries it, from where, how it's graded), palette (4–6 named colours + accent job),
+free type pairing with roles, motion language, 3D level and why (only if it passes 3d.md → Quality floor),
+ASCII layout of hero + one key section, 3–5 references.
+Then check each against the generic defaults in the frontend-design skill and the instant-fail list in
+quality-bar.md; revise anything that reads as a default, a template or a cartoon.
 ```
 
 ## Section build

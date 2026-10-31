@@ -2,6 +2,14 @@
 
 Every entry was checked live. "No login" = browsable with Playwright without an account. Re-verify anything older than ~6 months before relying on pricing or licences.
 
+## Finding references fast (learned in testing)
+- **Awwwards search:** `https://www.awwwards.com/websites/?text=<term>` lists nominees. Each `/sites/<slug>` page has the real URL (the "Visit" link) and its awards. You can fetch those pages from inside the Awwwards tab to collect URLs and awards in one pass. A Site of the Day is not proof of quality: check the screenshot against `quality-bar.md`. Prefer Site of the Month/Year and Developer Award winners.
+- **Look in adjacent premium categories,** not only the brief's industry. For example, for coffee: premium DTC food, kitchen equipment, fragrance and design objects.
+- **Batch capture:** script the visits (open, wait about 4 s, close pop-ups, screenshot the hero, scroll, screenshot a section) with a fresh tab per site. Reusing one tab breaks when sites redirect mid-load.
+- **Pop-ups ruin references:** close cookie banners and newsletter modals (Escape, Accept, or the ×) before every screenshot.
+- **Recent (ex-Godly)'s cards link to designers' X profiles,** not the sites. Use it for browsing, and get URLs elsewhere.
+- **Land-book blocks plain fetching;** use Playwright.
+
 ## Where to look (by need)
 
 | Need | Go to first | Then |

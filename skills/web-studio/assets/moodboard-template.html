@@ -56,6 +56,8 @@ const BOARD = {
       concept: "The idea in one line.",
       story: ["Beat 1", "Beat 2", "Beat 3"],
       signature: "The one moment people remember.",
+      benchmark: "site.com — what this direction takes from it",
+      assets: "Which imagery carries it (photography + grade, renders, video, models) and where it comes from.",
       palette: [
         { name: "Base", hex: "#ffffff", role: "background" },
         { name: "Ink", hex: "#111111", role: "text" },
@@ -106,6 +108,8 @@ BOARD.directions.forEach((d) => {
       el("p", { className: "concept", textContent: d.concept, style: { fontFamily: body } })),
     block("Story", el("ol", {}, d.story.map((s) => el("li", { textContent: s })))),
     block("Signature moment", el("p", { textContent: d.signature })),
+    block("Benchmark", el("p", { textContent: d.benchmark || "—" })),
+    block("Asset strategy", el("p", { textContent: d.assets || "—" })),
     block("Palette", el("div", { className: "swatches" }, d.palette.map((c) =>
       el("div", { className: "sw" }, el("div", { style: { background: c.hex } }),
         el("small", { textContent: `${c.name} ${c.hex}\n${c.role}` }))))),
