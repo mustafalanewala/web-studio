@@ -56,6 +56,7 @@ const BOARD = {
       sub: "The real subhead from content.md.",
       cta: "Primary action", secondary: "Secondary action",
       media: { src: "", shot: "Placeholder: macro of the product on linen, soft window light from the left", grade: "contrast(1.05) saturate(.95)" },
+      look: "Macro still life · 100 mm, f/2.8, low 3/4 · one soft window key from the left, 5200 K · low saturation, lifted blacks, fine grain",
       proof: [ { n: "48h", t: "from roaster to door" }, { n: "12 kg", t: "per batch" }, { n: "4.9", t: "from 1,200 reviews" } ]
     }
   ]
@@ -100,6 +101,8 @@ BOARD.tiles.forEach((t) => {
       el("span", { textContent: t.secondary, style: { fontFamily: B, borderBottom: `1px solid ${c.fg}`, paddingBottom: "2px" } }))),
     el("div", { className: "row" }, el("h3", { textContent: "Proof section sample" }), el("div", { className: "section-demo" },
       t.proof.map((p) => el("div", {}, el("div", { className: "num", textContent: p.n, style: { fontFamily: D, fontWeight: t.display.weight } }), el("p", { textContent: p.t, style: { fontFamily: B, fontSize: "13px", opacity: .75 } }))))),
+    t.look ? el("div", { className: "row" }, el("h3", { textContent: "Look" }),
+      el("p", { textContent: t.look, style: { fontFamily: B, fontSize: "13px", maxWidth: "60ch" } })) : "",
     el("div", { className: "row" }, el("h3", { textContent: "Type" }),
       el("p", { textContent: `${t.display.family} (${t.display.source}) + ${t.body.family} (${t.body.source})`, style: { fontFamily: B, fontSize: "13px" } }))
   ));

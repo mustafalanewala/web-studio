@@ -36,6 +36,20 @@ and a proof section using the real headline and copy. Check each against quality
 and frontend-design's default traits; revise anything generic before showing.
 ```
 
+## Look (with each style tile, Phase 4)
+```
+Write the Look for [tile name] with art-direction.md §2: medium, camera, light, palette (the tile's hex),
+grade, world, never. Derive each line from the narrative and the tile's axes. No hype words.
+```
+
+## Prompt pack (after the hero pick)
+```
+Build _studio/prompts.md from media.ts with assets/prompt-pack-template.md: the chosen Look, then a card per
+slot without src, anchor first, then by shared setup. Each still prompt follows art-direction.md §3 and states
+its safe zone from the section layout and the mobile crop; each video starts from an approved still (§5).
+Store safeZone, prompt, motion and refs back in media.ts. File names = slot ids.
+```
+
 ## Hero options (Phase 5)
 ```
 In the chosen system, build 3 hero variants at /studio/heroes that differ in composition (e.g. statement type,

@@ -13,6 +13,7 @@ The test: would a premium brand pay a top studio for this and launch it proudly?
 - **Editorial stock only.** Pick natural light, texture, hands, process, macro detail, place. Avoid people smiling at the camera, staged offices, over-saturated HDR and anything with visible stock clichés.
 - **Product is the hero.** For commerce, the product must be photographed or rendered at the quality of the benchmark. Never use a coloured box or a placeholder shape as the product.
 - **3D only when it beats a photograph,** and only with assets that pass `3d.md` → *Quality floor*. Otherwise use photography, video or a scroll-scrubbed image sequence.
+- **Generated media is art-directed like a shoot:** one Look, the anchor first, every file checked at 100% (`art-direction.md`). Prompts written slot by slot with no shared Look are how AI imagery ends up looking random.
 
 ## 3. Typography
 - **One display family and one text family.** Emphasis comes from scale and weight, rarely from colour.
@@ -61,6 +62,7 @@ When a brief says "playful", find a premium brand that is playful (DTC food, des
 - **Cartoon language:** stickers or illustrated characters as the main visual system of a premium brand.
 - **Neo-brutalist sticker kit:** hard drop shadows and thick outlines on every component.
 - **Generic stock hero,** or mismatched photos with no shared grade.
+- **AI tells in generated media:** garbled text, wrong hands, waxy surfaces, a product that differs from the real one, or generated people presented as the client's team or customers.
 - **Default component library:** shadcn or any kit's out-of-the-box look.
 - **Motion everywhere** with no hierarchy.
 - **Lorem ipsum** or placeholder product data in a client review.

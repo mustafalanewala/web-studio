@@ -49,6 +49,7 @@ Fix collisions with real numbers in the layout or model, never by hiding them wi
 ## 6. Content and licences
 - No lorem ipsum, no placeholder stock that contradicts the brand
 - Every font, image, model, icon, HDRI listed with source and licence; CC-BY attributions present
+- Generated media marked `source: "generated"` with tool and seed, passed `art-direction.md` §9, unbuilt places captioned "Artist's impression"
 - Nothing copied from gallery reference sites
 
 ## 7. Client-grade bar

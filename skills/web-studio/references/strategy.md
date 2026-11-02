@@ -17,6 +17,7 @@ VOICE        3 rules + 2 sample lines in that voice.
 STORY ARC    The arc chosen below, with each beat mapped to a section.
 MESSAGING    Headline · subhead · 3 supporting messages · proof line · primary CTA wording.
 SITEMAP      Each page and its single job.
+DECISIONS    One line per call made (direction, hero, imagery route, 3D level) and why (decide.md).
 ```
 
 ## Finding the insight (pick 2–3 methods, 10 minutes)
