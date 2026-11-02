@@ -112,17 +112,18 @@ Video also: the loop seam, flicker, shimmer on fine textures, objects morphing, 
 - Check the tool's terms for commercial use before handoff.
 
 ## 11. Processing (ffmpeg)
-If `ffmpeg` is missing, ask before installing it (`brew install ffmpeg`), or have the user export from their editor.
+If `ffmpeg` or `cwebp` is missing, ask before installing them (`brew install ffmpeg webp`), or have the user export from their editor. Homebrew's ffmpeg has no WebP encoder, so frames go through PNG and `cwebp`.
 ```bash
 # hero loop: H.264 MP4 (web-optimised) + VP9 WebM, no audio, 1920 wide
 ffmpeg -i in.mp4 -an -vf "scale=1920:-2" -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p -movflags +faststart public/media/hero-loop.mp4
 ffmpeg -i in.mp4 -an -vf "scale=1920:-2" -c:v libvpx-vp9 -b:v 0 -crf 36 -row-mt 1 public/media/hero-loop.webm
-# poster from the first frame
-ffmpeg -i in.mp4 -frames:v 1 -q:v 2 public/media/hero-loop-poster.jpg
+# poster from the first frame, same size as the video
+ffmpeg -i in.mp4 -frames:v 1 -update 1 -vf "scale=1920:-2" -q:v 2 public/media/hero-loop-poster.jpg
 # scrub frames: N frames over the clip (fps = N / duration), desktop and a lighter mobile set
-mkdir -p public/media/seq/<id>/desktop public/media/seq/<id>/mobile
-ffmpeg -i in.mp4 -an -vf "fps=12,scale=1600:-2" -c:v libwebp -quality 78 public/media/seq/<id>/desktop/%03d.webp
-ffmpeg -i in.mp4 -an -vf "fps=6,scale=800:-2" -c:v libwebp -quality 72 public/media/seq/<id>/mobile/%03d.webp
+id=<slot-id>; tmp=$(mktemp -d); mkdir -p "$tmp/desktop" "$tmp/mobile" public/media/seq/$id/desktop public/media/seq/$id/mobile
+ffmpeg -i in.mp4 -an -vf "fps=12,scale=1600:-2" "$tmp/desktop/%03d.png"
+ffmpeg -i in.mp4 -an -vf "fps=6,scale=800:-2" "$tmp/mobile/%03d.png"
+for f in "$tmp"/*/*.png; do cwebp -quiet -q 78 "$f" -o "public/media/seq/$id/$(basename "$(dirname "$f")")/$(basename "${f%.png}").webp"; done; rm -rf "$tmp"
 # loop seam fix: ping-pong (only for motion with no direction)
 ffmpeg -i in.mp4 -an -filter_complex "[0:v]reverse[r];[0:v][r]concat=n=2:v=1[v]" -map "[v]" -c:v libx264 -crf 20 -pix_fmt yuv420p pingpong.mp4
 ```

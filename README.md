@@ -25,7 +25,7 @@ Everything it recommends is free for commercial use and was verified on 2026-10-
 - **Playwright plugin** (used for live references and visual QA) — in Claude Code: `/plugin install playwright@claude-plugins-official`
 - **Frontend Design plugin** (recommended companion for aesthetic discipline) — `/plugin install frontend-design@claude-plugins-official`
 - Node.js 20+ and Python 3 (Python only serves the local moodboard page)
-- Optional: `ffmpeg` for web video, posters and scroll frame sequences
+- Optional: `ffmpeg` and `webp` (`brew install ffmpeg webp`) for web video, posters and scroll frame sequences
 
 ## Install
 
